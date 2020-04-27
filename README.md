@@ -1,6 +1,6 @@
 # 基于移动终端的花卉识别系统
 
-（文章图片加载有问题的话可以参考[博客](https://juejin.im/post/5e7d7ac1518825736f6400c1)）
+（**文章图片加载有问题的话可以参考**[博客](https://juejin.im/post/5e7d7ac1518825736f6400c1)）
 
 #### 介绍
 
@@ -17,6 +17,8 @@
 #### 数据集
 
 &emsp;&emsp;data文件夹内存放了我使用的20种花卉数据集。日后会继续扩增。
+
+&emsp;&emsp;近期发现了一个不错的图片网站，可以自行扩充数据（https://www.ivsky.com/）
 
 &emsp;&emsp;数据来源主要取决于3个方面：
 
@@ -53,7 +55,7 @@
 
 &emsp;&emsp;花卉样式：
 
-![image-20200323134803440](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323134803440.png)
+![image-20200323134803440](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323134803440.png)
 
 #### 数据扩展
 
@@ -63,15 +65,15 @@
 
 &emsp;&emsp;**镜像翻转**：将图片左右翻转，生成新的数据
 
-![image-20200323161939465](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323161939465.png)
+![image-20200323161939465](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323161939465.png)
 
 &emsp;&emsp;**上下翻转**：将图片上下翻转，生成新的数据
 
-![image-20200323162157922](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323162157922.png)
+![image-20200323162157922](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323162157922.png)
 
 &emsp;&emsp;**椒盐噪声**：为图片增加噪声，生成新的数据
 
-![image-20200323162309627](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323162309627.png)
+![image-20200323162309627](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323162309627.png)
 
 &emsp;&emsp;扩展后的花卉数量如下所示：
 
@@ -104,7 +106,7 @@
 
 &emsp;&emsp;在PyTorch的torchvision包内有一个关于计算机视觉的数据读取类`ImageFolder`，它的调用方式是torchvision.datasets.ImageFolder，主要功能是读取图片数据，且要求图片是下图这种存放方式。
 
-![image-20200321104936098](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200321104936098.png)
+![123](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/123.jpg)
 
 &emsp;&emsp;然后这样来调用类：
 
@@ -118,7 +120,7 @@ train_dataset = ImageFolder(root='./data/train/',transform=data_transform)
 
 &emsp;&emsp;因此我们就要像ImageFolder要求的那样切分数据集。
 
-![image-20200323184552442](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323184552442.jpg)
+![image-20200323184552442](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323184552442.jpg)
 
 &emsp;&emsp;我切分的比例是3:1:1。实际上，如果不想切分出验证集的话，可以将验证集的代码部分注掉，直接使用训练集和测试集也是可以的。
 
@@ -135,21 +137,21 @@ scale = [0.6, 0.2, 0.2]
 
 &emsp;&emsp;AlexNet网络结构如下：
 
-![img](https://raw.githubusercontent.com/SJcun/Picture/master/img/clip_image002.jpg)
+![456](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/456.jpg)
 
 &emsp;&emsp;VGG16网络结构如下：
 
-![147](https://raw.githubusercontent.com/SJcun/Picture/master/img/147.jpg)
+![789](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/789.jpg)
 
 &emsp;&emsp;二者相比较，VGG16准确率更高一些，可见更深的网络对于提高准确率有一定的帮助。
 
 &emsp;&emsp;AlexNet训练过程中的准确率变化如下：
 
-![image-20200323225509766](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323225509766.png)
+![image-20200323225509766](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323225509766.png)
 
 &emsp;&emsp;VGG16经历200个epoch训练的准确率变化如下：
 
-![image-20200323230153110](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323230153110.png)
+![image-20200323230153110](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323230153110.png)
 
 &emsp;&emsp;AlexNet经历了500个epoch训练后最终能达到83%的准确率
 
@@ -161,9 +163,9 @@ scale = [0.6, 0.2, 0.2]
 
 &emsp;&emsp;选用的是验证效果比较好的VGG16网络，读取的参数是200个epoch训练后的参数
 
-![image-20200323231914637](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323231914637.jpg)
+![image-20200323231914637](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323231914637.jpg)
 
-![image-20200323231935143](https://raw.githubusercontent.com/SJcun/Picture/master/img/image-20200323231935143.jpg)
+![image-20200323231935143](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200323231935143.jpg)
 
 &emsp;&emsp;可以看到，测试的效果还是非常好的，模型可以非常准确的判断花卉的种类。
 
@@ -173,7 +175,7 @@ scale = [0.6, 0.2, 0.2]
 
 按照`flask`文件夹中的程序，在服务器上运行之后，然后打开一个新网页，输入`IP:端口?图片地址`就可以做识别了。
 
-![image-20200423135159846](https://raw.githubusercontent.com/SJcun/Picture/master/img_new/image-20200423135159846.png)
+![image-20200423135159846](https://gitee.com/Sjcun/flower_recognition/raw/master/upload/image-20200423135159846.png)
 
 其中`sjcup.cn`是我的一个域名，这里可以替换为自己服务器的`公网IP`
 
